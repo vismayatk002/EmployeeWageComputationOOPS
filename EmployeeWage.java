@@ -13,7 +13,7 @@ class EmployeeWage{
         }
     }
     public void calcDailyEmpWage(int empType){
-        int dailyEmpWage =  wagePerHr * wagePerHr;
+        int dailyEmpWage =  wagePerHr * fullDayHr;
         switch(empType){
             case  FULL_TIME : 
                 System.out.println("Employee Type : Full time");
