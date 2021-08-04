@@ -1,8 +1,8 @@
 class EmployeeWage{
-      
+    
     int IS_PRESENT = 1;
     int WAGE_PER_HR=20;
-    int FULLDAY_HR=8;
+    int FULL_DAY_HR=8;
 
     public boolean checkIsPresent(double empCheck){
         if(empCheck == IS_PRESENT){
@@ -12,8 +12,8 @@ class EmployeeWage{
             return false;
         }
     }
-    public void calcDailyEmpWage(){
-        int dailyEmpWage =  WAGE_PER_HR * FULLDAY_HR;
-        System.out.println("Daily Employee Wage :" + dailyEmpWage);
+    public int calcDailyEmpWage(){
+        int dailyEmpWage =  WAGE_PER_HR * FULL_DAY_HR;
+        return  dailyEmpWage; 
     }
 }

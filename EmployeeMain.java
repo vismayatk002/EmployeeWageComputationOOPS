@@ -4,7 +4,8 @@ public class EmployeeMain{
         EmployeeWage emp = new EmployeeWage();
         double empCheck = Math.floor (Math.random() * 10) % 2;
         if(emp.checkIsPresent(empCheck)){
-            emp.calcDailyEmpWage();
+           
+            System.out.println("Daily Employee Wage :" +  emp.calcDailyEmpWage());
         }
         else{
             System.out.println("Employee is absent");
