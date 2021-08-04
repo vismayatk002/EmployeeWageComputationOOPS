@@ -1,9 +1,11 @@
 class EmployeeWage{
-      
+    
     final int IS_PRESENT = 1;
     final int FULL_TIME = 1;
-    int wagePerHr = 20;
+    final int WORKING_DAYS = 20;
     int fullDayHr= 16;
+    int wagePerHr = 20;
+    
     public boolean checkIsPresent(int empCheck){
         if(empCheck == IS_PRESENT){ 
             return true;
@@ -12,16 +14,32 @@ class EmployeeWage{
             return false;
         }
     }
-    public void calcDailyEmpWage(int empType){
-        int dailyEmpWage =  wagePerHr * wagePerHr;
+    public int calcDailyEmpWage(int empType){
+
+         int dailyEmpWage = 0;
         switch(empType){
             case  FULL_TIME : 
-                System.out.println("Employee Type : Full time");
-                System.out.println("Daily Employee Wage :" + dailyEmpWage);
+                dailyEmpWage =  wagePerHr * fullDayHr;
             break;
             default : 
-                System.out.println("Employee Type : Part time");
-                System.out.println("Daily Employee Wage :" + (dailyEmpWage / 2));
+                dailyEmpWage = dailyEmpWage / 2;
+                
         }
+        return dailyEmpWage;
+    }
+    public int calcMonthlyWage(){
+
+        int monthlyWage = 0;
+        int dailyWage;
+        for(int day=1; day<=WORKING_DAYS; day++){
+            int empCheck = (int)(Math.random() * 10) % 2;
+            if(checkIsPresent(empCheck)){    
+                int empType = (int)(Math.random() * 10) % 2;
+                dailyWage = calcDailyEmpWage(empType);   
+            
+                monthlyWage += dailyWage;
+            }
+        }
+        return monthlyWage;
     }
 }
