@@ -5,9 +5,12 @@ class EmployeeWage{
     final int WORKING_DAYS = 20;
     int fullDayHr= 16;
     int wagePerHr = 20;
+    int totalAttendance = 0;
+    int totalHr = 0;
     
     public boolean checkIsPresent(int empCheck){
         if(empCheck == IS_PRESENT){ 
+            totalAttendance++;
             return true;
         }
         else{ 
@@ -18,10 +21,12 @@ class EmployeeWage{
 
          int dailyEmpWage = 0;
         switch(empType){
-            case  FULL_TIME : 
+            case  FULL_TIME :
+                totalHr += fullDayHr;
                 dailyEmpWage =  wagePerHr * fullDayHr;
             break;
-            default : 
+            default :
+                totalHr += fullDayHr / 2; 
                 dailyEmpWage = dailyEmpWage / 2;
                 
         }
@@ -31,13 +36,15 @@ class EmployeeWage{
 
         int monthlyWage = 0;
         int dailyWage;
-        for(int day=1; day<=WORKING_DAYS; day++){
-            int empCheck = (int)(Math.random() * 10) % 2;
-            if(checkIsPresent(empCheck)){    
-                int empType = (int)(Math.random() * 10) % 2;
-                dailyWage = calcDailyEmpWage(empType);   
-            
-                monthlyWage += dailyWage;
+    
+        while(totalAttendance <=20 && totalHr <=100){
+            for(int day=1; day<=WORKING_DAYS; day++){
+                int empCheck = (int)(Math.random() * 10) % 2;
+                if(checkIsPresent(empCheck)){
+                    int empType = (int)(Math.random() * 10) % 2;
+                    dailyWage = calcDailyEmpWage(empType);   
+                    monthlyWage += dailyWage;
+                }
             }
         }
         return monthlyWage;
