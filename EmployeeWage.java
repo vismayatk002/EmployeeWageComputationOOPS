@@ -2,12 +2,16 @@ class EmployeeWage{
     
     final int IS_PRESENT = 1;
     final int FULL_TIME = 1;
-    final int WORKING_DAYS = 20;
     int fullDayHr= 16;
-    int wagePerHr = 20;
+    int workingDays;
+    int wagePerHr;
     int totalAttendance = 0;
     int totalHr = 0;
     
+    public EmployeeWage(int workingDays , int wagePerHr){
+        this.workingDays = workingDays;
+        this.wagePerHr = wagePerHr;
+    }
     public boolean checkIsPresent(int empCheck){
         if(empCheck == IS_PRESENT){ 
             totalAttendance++;
@@ -19,7 +23,7 @@ class EmployeeWage{
     }
     public int calcDailyEmpWage(int empType){
 
-         int dailyEmpWage = 0;
+        int dailyEmpWage = 0;
         switch(empType){
             case  FULL_TIME :
                 totalHr += fullDayHr;
@@ -28,7 +32,6 @@ class EmployeeWage{
             default :
                 totalHr += fullDayHr / 2; 
                 dailyEmpWage = dailyEmpWage / 2;
-                
         }
         return dailyEmpWage;
     }
@@ -38,7 +41,7 @@ class EmployeeWage{
         int dailyWage;
     
         while(totalAttendance <=20 && totalHr <=100){
-            for(int day=1; day<=WORKING_DAYS; day++){
+            for(int day=1; day<=workingDays; day++){
                 int empCheck = (int)(Math.random() * 10) % 2;
                 if(checkIsPresent(empCheck)){
                     int empType = (int)(Math.random() * 10) % 2;
