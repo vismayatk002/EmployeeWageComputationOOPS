@@ -2,7 +2,7 @@ class EmployeeWage{
     
     final int IS_PRESENT = 1;
     final int FULL_TIME = 1;
-    int fullDayHr= 16;
+    int FULL_DAY_HR= 16;
     int workingDays;
     int wagePerHr;
     int totalAttendance = 0;
